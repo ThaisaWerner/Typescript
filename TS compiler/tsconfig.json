@@ -105,5 +105,40 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  //O que vier aqui não afeta as opções de compilação, mas nos dá alguns recursos bem legais
+  
+  //podemos colocar caminhos para arquivos que não vão ser incluídos na compilação
+  "exclude": [
+    //"analytics.ts"
+
+  //por exemplo, o código abaixo que nenhum arquivo que termine com .dev.ts deve ser compilado
+    //"*.dev.ts"
+
+  //e abaixo diz que qualquer arquivo desse em qualquer pasta será ignorado
+    //"**/*.dev.ts"
+
+//são todas as dependências e dependências das dependências do arquivo de json, que deixam
+//a compilação mais devagar e as vezes até quebram o código.
+//mas o node modules, geralmente já é excluído automaticamente, como uma configuração default,
+//então não precisamos adicionar essa config aqui
+    "node_modules"
+  ],
+/* Faz o contrário do exclude. Diz ao ts quais arquivos queremos incluir na compilação
+   e tudo que não estiver escrito aqui não será compilado, então, por exemplo, o
+   analytics não vai compilar 
+   E se exclude for definido com include vai sobrepor include.
+   Por exemplo, se excluirmos um subpasta de uma pasta que é parte do include, vai dar certo (?)
+   Então, basicamente, compilamos include menos o exclude  */
+
+  /* "include": [
+    "app.ts",
+    "analytics.ts"
+  ]*/
+
+/* Temos também opções de arquivo, que permite apontar para arquivos individuais
+ é parecido com o include, mas pode-se especificar pastas inteiras */
+  /*"files": [
+    "app.ts"
+  ]*/
 }
